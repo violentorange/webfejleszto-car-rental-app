@@ -6,17 +6,17 @@
 -- Client version: 4.1
 --
 
--- 
+--
 -- Disable foreign keys
--- 
+--
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 
--- 
+--
 -- Set SQL mode
--- 
+--
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- 
+--
 -- Set character set the client will use to send SQL statements to the server
 --
 SET NAMES 'utf8';
@@ -38,7 +38,7 @@ USE car_rental;
 CREATE TABLE cars (
   id INT(11) NOT NULL AUTO_INCREMENT,
   plate_number VARCHAR(50) DEFAULT NULL,
-  owner VARCHAR(50) DEFAULT NULL,
+  owner VARCHAR(100) DEFAULT NULL,
   model VARCHAR(50) DEFAULT NULL,
   make VARCHAR(50) DEFAULT NULL,
   performance INT(11) DEFAULT NULL,
@@ -72,11 +72,11 @@ ROW_FORMAT = DYNAMIC;
 --
 -- Create foreign key
 --
-ALTER TABLE rentals 
+ALTER TABLE rentals
   ADD CONSTRAINT FK_rentals_car_id2 FOREIGN KEY (car_id)
     REFERENCES cars(id) ON DELETE CASCADE;
 
--- 
+--
 -- Dumping data for table cars
 --
 INSERT INTO cars VALUES
@@ -181,7 +181,7 @@ INSERT INTO cars VALUES
 (99, 'DB-AC-290', 'Maynord Edeler', 'Highlander', 'Toyota', 117),
 (100, 'DX-LB-692', 'Sheffie Attenburrow', 'MKX', 'Lincoln', 109);
 
--- 
+--
 -- Dumping data for table rentals
 --
 INSERT INTO rentals VALUES
@@ -1186,12 +1186,12 @@ INSERT INTO rentals VALUES
 (999, 43, '2023-05-07', '2024-04-22'),
 (1000, 28, '2023-05-08', '2024-01-09');
 
--- 
+--
 -- Restore previous SQL mode
--- 
+--
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 
--- 
+--
 -- Enable foreign keys
--- 
+--
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
