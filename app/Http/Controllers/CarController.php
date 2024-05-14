@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCarRequest;
 use App\Http\Resources\CarResource;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CarController extends Controller
 {
@@ -23,6 +24,13 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
+        if (Auth::user()->is_admin != true)
+        {
+            return response()->json([
+               'message' => 'You are not authorized to perform this action'
+            ], 403);
+        }
+
         $car = Car::create($request->all());
         return new CarResource($car);
     }
@@ -40,6 +48,14 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
+
+        if (Auth::user()->is_admin != true)
+        {
+            return response()->json([
+               'message' => 'You are not authorized to perform this action'
+            ], 403);
+        }
+
         $car->update($request->all());
         return new CarResource($car);
     }
@@ -49,6 +65,14 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+
+        if (Auth::user()->is_admin != true)
+        {
+            return response()->json([
+               'message' => 'You are not authorized to perform this action'
+            ], 403);
+        }
+
         $car->delete();
         return response()->noContent();
     }

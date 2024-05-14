@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "webfejleszto_car_rentals_api",
     "collectionId": "b0990868-3c26-43bc-a444-517e84b91943",
-    "dateExported": "2024-05-14T14:28:10.277Z",
+    "dateExported": "2024-05-14T15:37:06.115Z",
     "version": "1.2",
     "folders": [
         {
@@ -56,11 +56,11 @@
             "colId": "b0990868-3c26-43bc-a444-517e84b91943",
             "containerId": "71b7e675-5f9f-40ee-9776-704f953c91f2",
             "name": "get all rentals of one car ",
-            "url": "http://127.0.0.1:8000/api/cars/3/rentals",
+            "url": "http://127.0.0.1:8000/api/cars/11/rentals",
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-05-07T15:39:45.675Z",
-            "modified": "2024-05-07T15:41:01.296Z",
+            "modified": "2024-05-14T15:31:18.611Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -71,8 +71,10 @@
                     "value": "application/json"
                 }
             ],
-            "params": [],
-            "tests": []
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|1QPrB72ZtCE5JesU0dmupPcVqLyigqiclFXLrc6x04f0d63f"
+            }
         },
         {
             "_id": "0d9e67ba-8357-46b1-be29-940b1489e857",
@@ -83,7 +85,7 @@
             "method": "DELETE",
             "sortNum": 20000,
             "created": "2024-05-07T15:33:09.051Z",
-            "modified": "2024-05-14T14:25:04.127Z",
+            "modified": "2024-05-14T14:41:37.680Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -93,18 +95,22 @@
                     "name": "Content-Type",
                     "value": "application/json"
                 }
-            ]
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|1QPrB72ZtCE5JesU0dmupPcVqLyigqiclFXLrc6x04f0d63f"
+            }
         },
         {
             "_id": "1be530d4-727d-47b9-bb7c-a2b17be64ed6",
             "colId": "b0990868-3c26-43bc-a444-517e84b91943",
             "containerId": "71b7e675-5f9f-40ee-9776-704f953c91f2",
             "name": "get one rental",
-            "url": "http://127.0.0.1:8000/api/rentals/12",
+            "url": "http://127.0.0.1:8000/api/rentals/929",
             "method": "GET",
             "sortNum": 20000,
             "created": "2024-05-07T15:46:06.370Z",
-            "modified": "2024-05-14T13:35:25.535Z",
+            "modified": "2024-05-14T15:19:39.198Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -114,7 +120,11 @@
                     "name": "Content-Type",
                     "value": "application/json"
                 }
-            ]
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|1QPrB72ZtCE5JesU0dmupPcVqLyigqiclFXLrc6x04f0d63f"
+            }
         },
         {
             "_id": "6ebba771-a890-4325-a76d-14d8177fe2fc",
@@ -125,7 +135,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-05-07T15:10:10.488Z",
-            "modified": "2024-05-07T15:16:11.153Z",
+            "modified": "2024-05-14T15:27:25.901Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -136,24 +146,26 @@
                     "value": "application/json"
                 }
             ],
-            "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"plate_number\" : \"AB-BB-123\",\n  \"owner\" : \"Gipsz Jakab\",\n  \"make\" : \"Skoda\",\n  \"model\" : \"Octavia\",\n  \"performance\" : 123\n}",
+                "raw": "{\n  \"plate_number\" : \"AX-BB-123\",\n  \"owner\" : \"Bárki Bátor\",\n  \"make\" : \"Skoda\",\n  \"model\" : \"Octavia\",\n  \"performance\" : 123\n}",
                 "form": []
             },
-            "tests": []
+            "auth": {
+                "type": "bearer",
+                "bearer": "5|WbEVLcivQsRssyH2pUQWkTLtjc3a2dx0zxCiwsIwc5f19278"
+            }
         },
         {
             "_id": "de8e669a-5040-44db-9a30-7d9dbd996513",
             "colId": "b0990868-3c26-43bc-a444-517e84b91943",
             "containerId": "71b7e675-5f9f-40ee-9776-704f953c91f2",
             "name": "add new rental to a car",
-            "url": "http://127.0.0.1:8000/api/cars/102/rentals",
+            "url": "http://127.0.0.1:8000/api/cars/11/rentals",
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-05-07T15:50:54.050Z",
-            "modified": "2024-05-07T15:52:59.638Z",
+            "modified": "2024-05-14T15:30:56.705Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -164,24 +176,26 @@
                     "value": "application/json"
                 }
             ],
-            "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"start_date\" : \"2024-05-07\",\n  \"end_date\" : \"2024-05-08\"\n}\n",
+                "raw": "{\n  \"start_date\" : \"2024-06-01\",\n  \"end_date\" : \"2024-06-21\"\n}\n",
                 "form": []
             },
-            "tests": []
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|1QPrB72ZtCE5JesU0dmupPcVqLyigqiclFXLrc6x04f0d63f"
+            }
         },
         {
             "_id": "c993284d-fcbb-42cc-97aa-6acb5c9168a3",
             "colId": "b0990868-3c26-43bc-a444-517e84b91943",
             "containerId": "71b7e675-5f9f-40ee-9776-704f953c91f2",
             "name": "delete rental",
-            "url": "http://127.0.0.1:8000/api/rentals/225",
+            "url": "http://127.0.0.1:8000/api/rentals/929",
             "method": "DELETE",
             "sortNum": 30000,
             "created": "2024-05-14T13:30:52.548Z",
-            "modified": "2024-05-14T13:31:16.071Z",
+            "modified": "2024-05-14T15:22:09.616Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -191,7 +205,11 @@
                     "name": "Content-Type",
                     "value": "application/json"
                 }
-            ]
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|1QPrB72ZtCE5JesU0dmupPcVqLyigqiclFXLrc6x04f0d63f"
+            }
         },
         {
             "_id": "0a5f6acf-8152-4464-bbdc-697205eacc30",
@@ -277,7 +295,7 @@
             "method": "POST",
             "sortNum": 60000,
             "created": "2024-05-14T13:58:58.316Z",
-            "modified": "2024-05-14T14:01:06.790Z",
+            "modified": "2024-05-14T14:56:19.695Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -295,7 +313,7 @@
             ],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\" : \"Gipsz Jakab\",\n  \"email\" : \"gipsy@gmail.com\",\n  \"password\" : \"12345678\"\n}",
+                "raw": "{\n  \"name\" : \"Makk Márton\",\n  \"email\" : \"makkmarci@gmail.com\",\n  \"password\" : \"12345678\"\n}",
                 "form": []
             }
         },
@@ -391,5 +409,5 @@
             }
         }
     ],
-    "ref": "X52DHO_Gx2VYpRKv2VPb3PcGO7UQ5HhqTVvfKO2AQ4lNREfzlZicvkIU43wgCiR7aLijCnzmx3wYCsYgK-O_xQ"
+    "ref": "X52DHO_Gx2VYpRKv2VPb3PcGO7UQ5HhqTVvfKO2AQ4me3HgxMcbco__jCDikz0iB0KxVcsr71wVnKQqUIH2kog"
 }

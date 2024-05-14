@@ -6,6 +6,8 @@ use App\Http\Resources\RentalResource;
 use App\Models\Car;
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RentalController extends Controller
 {
@@ -14,7 +16,20 @@ class RentalController extends Controller
      */
     public function index(Car $car)
     {
-        return RentalResource::collection($car->rentals);
+        $rentals = $car->rentals;
+        $user = Auth::user();
+
+        $rentals = $rentals->filter(function ($rental) use ($user) {
+            return $rental->user_id == $user->id;
+        });
+        return RentalResource::collection($rentals);
+
+        // $rentals = DB::table('rentals')
+        //             ->where('car_id', $car->id)
+        //             ->where('user_id', Auth::user()->id)
+        //             ->get();
+
+        // return $rentals;
     }
 
     /**
@@ -26,6 +41,7 @@ class RentalController extends Controller
             'car_id' => $car->id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'user_id' => $request->user()->id,
         ]);
         return new RentalResource($rental);
     }
@@ -35,6 +51,12 @@ class RentalController extends Controller
      */
     public function show(Rental $rental)
     {
+        if ($rental->user_id != Auth::user()->id) {
+            return response()->json([
+               'message' => 'You are not authorized to perform this action'
+            ], 403);
+        }
+
         return new RentalResource($rental);
     }
 
@@ -43,6 +65,13 @@ class RentalController extends Controller
      */
     public function update(Request $request, Rental $rental)
     {
+
+        if ($rental->user_id != Auth::user()->id) {
+            return response()->json([
+               'message' => 'You are not authorized to perform this action'
+            ], 403);
+        }
+
         $rental->update($request->all());
         return new RentalResource($rental);
     }
@@ -52,6 +81,13 @@ class RentalController extends Controller
      */
     public function destroy(Rental $rental)
     {
+
+        if ($rental->user_id != Auth::user()->id) {
+            return response()->json([
+               'message' => 'You are not authorized to perform this action'
+            ], 403);
+        }
+
         $rental->delete();
         return response()->noContent();
     }
