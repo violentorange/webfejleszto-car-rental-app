@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('cars', CarController::class);
-Route::apiResource('cars.rentals', RentalController::class);
+Route::apiResource('cars.rentals', RentalController::class)->only(['index','store']);
+Route::apiResource('rentals', RentalController::class)->except(['index','store']);

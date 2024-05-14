@@ -33,7 +33,7 @@ class RentalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Car $car, Rental $rental)
+    public function show(Rental $rental)
     {
         return new RentalResource($rental);
     }
@@ -41,16 +41,18 @@ class RentalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Car $car, Rental $rental)
+    public function update(Request $request, Rental $rental)
     {
-        //
+        $rental->update($request->all());
+        return new RentalResource($rental);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Car $car, Rental $rental)
+    public function destroy(Rental $rental)
     {
-        //
+        $rental->delete();
+        return response()->noContent();
     }
 }
