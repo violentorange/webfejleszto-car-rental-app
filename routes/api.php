@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\RentalController;
 use Illuminate\Http\Request;
@@ -20,6 +21,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('cars', CarController::class);
-Route::apiResource('cars.rentals', RentalController::class)->only(['index','store']);
-Route::apiResource('rentals', RentalController::class)->except(['index','store']);
+//public routes
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::apiResource('cars', CarController::class)->only(['index','show']);
+
+//protected routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::apiResource('cars', CarController::class)->only(['store', 'update', 'destroy']);
+
+    Route::apiResource('cars.rentals', RentalController::class)->only(['index','store']);
+    Route::apiResource('rentals', RentalController::class)->except(['index','store']);
+});
+
