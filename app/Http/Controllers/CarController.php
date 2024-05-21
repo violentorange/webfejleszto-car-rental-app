@@ -25,10 +25,9 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
-        if (Auth::user()->is_admin != true)
-        {
+        if ($request->user()->cannot('store', Car::class)) {
             return response()->json([
-               'message' => 'You are not authorized to perform this action'
+                    'message' => 'You are not authorized to perform this action'
             ], 403);
         }
 
@@ -49,13 +48,13 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-
-        if (Auth::user()->is_admin != true)
-        {
+        if ($request->user()->cannot('update', $car)) {
             return response()->json([
-               'message' => 'You are not authorized to perform this action'
+                    'message' => 'You are not authorized to perform this action'
             ], 403);
+            // abort(403);
         }
+
 
         $car->update($request->all());
         return new CarResource($car);
@@ -66,13 +65,7 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-
-        if (Auth::user()->is_admin != true)
-        {
-            return response()->json([
-               'message' => 'You are not authorized to perform this action'
-            ], 403);
-        }
+        $this->authorize('delete', $car);
 
         $car->delete();
         return response()->noContent();
