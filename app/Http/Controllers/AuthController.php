@@ -43,7 +43,7 @@ class AuthController extends Controller
             'token' => $user->createToken('API Token')->plainTextToken,
         ];
 
-        return response()->json($data, 201);
+        return response()->json($data, 200);
     }
 
     public function logout()
